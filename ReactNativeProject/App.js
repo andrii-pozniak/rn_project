@@ -5,7 +5,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <ImageBackground source={require("./assets/images/photo_bg.jpg")} style={styles.image}>
-        <View style={styles.form}>
+      <Text style={styles.text}>Registration</Text>
+        {/* <View style={styles.form}>
         <Text style={styles.text}>Registration</Text>
         <TextInput
           style={styles.input}
@@ -13,7 +14,7 @@ export default function App() {
         // onChangeText={onChangeText}
         // value={text}
         />
-        <TextInput
+        {/* <TextInput
           style={styles.input}
           placeholder="Email"
         // onChangeText={onChangeText}
@@ -24,9 +25,9 @@ export default function App() {
           placeholder="Password"
         // onChangeText={onChangeText}
         // value={text}
-        />
-        </View>
-        
+        /> */}
+        {/* </View> */}
+         {/* */} 
       </ImageBackground>
     </View>
   );
