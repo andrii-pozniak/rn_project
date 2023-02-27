@@ -10,12 +10,12 @@ export const Form = props => {
         <View style={styles.form}>
             <TextInput
                 style={styles.input}
-                onFocus={() => setIsKeyboard(true)}
+                // onFocus={() => setIsKeyboard(true)}
                 placeholder="Login"
             />
             <TextInput
                 style={styles.input}
-                onFocus={() => setIsKeyboard(true)}
+                // onFocus={() => setIsKeyboard(true)}
                 placeholder="Email"
 
             />

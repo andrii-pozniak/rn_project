@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "../Form/Form";
+
 import { StyleSheet, Text, View,
      TextInput, TouchableOpacity,
     KeyboardAvoidingView,
     Platform, } from "react-native";
 
 export const RegistrationScreen = props => {
-  const [isKeyboard, setIsKeyboard] = useState(false)
+  // const [isKeyboard, setIsKeyboard] = useState(false)
     return (
         <View style={styles.RegistrationForm}>
           <View style={styles.photo}>
@@ -18,7 +19,7 @@ export const RegistrationScreen = props => {
             <View style={styles.inputPassword}>
               <TextInput
                 style={styles.input}
-                onFocus={() => setIsKeyboard(true)}
+                // onFocus={() => setIsKeyboard(true)}
                 placeholder="Password"
                 secureTextEntry={true}
               />
@@ -98,6 +99,16 @@ const styles = StyleSheet.create({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 7,
+    },
+    photo: {
+      width: 120,
+      height: 120,
+      backgroundColor: '#F6F6F6',
+      borderRadius: 16,
+      top:60,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+
     }
   });
   
