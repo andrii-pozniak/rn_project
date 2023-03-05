@@ -18,7 +18,6 @@ const initialState = {
 export const LoginScreen = () => {
     const [isKeyboard, setIsKeyboard] = useState(false)
     const [state, setState] = useState(initialState)
-    //  this.keyboardHide=this.keyboardHide.bind(this)
     const keyboardHide = () => {
         setIsKeyboard(false);
         Keyboard.dismiss();

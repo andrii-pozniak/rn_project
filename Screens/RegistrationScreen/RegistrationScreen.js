@@ -21,7 +21,6 @@ export const RegistrationScreen = (
   const [isKeyboard, setIsKeyboard] = useState(false)
   const [state, setState] = useState(initialState)
   console.log(keyboardHide)
-  //  this.keyboardHide=this.keyboardHide.bind(this)
   const keyboardHide = () => {
     setIsKeyboard(false);
     Keyboard.dismiss();
@@ -30,7 +29,6 @@ export const RegistrationScreen = (
 
 
   return (
-    // <TouchableWithoutFeedback onPress={keyboardHide}>
     <View style={styles.RegistrationForm}>
       <View style={{ ...styles.photo, top: isKeyboard ? 76 : 46 }}>
       </View>

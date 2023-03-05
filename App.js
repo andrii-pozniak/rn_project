@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback
 
 } from 'react-native';
+import * as Font from 'expo-font';
 // import { RegistrationScreen } from "./Screens/RegistrationScreen/RegistrationScreen";
 import { LoginScreen } from "./Screens/LoginScreen/LoginScreen";
 
@@ -19,10 +20,11 @@ let customFonts = {
   'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
   'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
   'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
- 
+
 };
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false)
 
   const addPerson = ({ login, email, password }) => {
     const NewRegistration = {
@@ -32,7 +34,7 @@ export default function App() {
     }
 
     setPerson((prevState) => ({ ...prevState, addPerson }))
-   
+
   }
 
   const keyboardHide = () => {
@@ -40,10 +42,15 @@ export default function App() {
     Keyboard.dismiss();
     setPerson(initialPerson)
   }
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-  
+  useEffect(() => {
+    (async () => await Font.loadAsync(customFonts))();
+    setFontsLoaded(true)
+  }, [])
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
