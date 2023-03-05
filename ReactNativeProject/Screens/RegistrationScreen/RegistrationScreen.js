@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 92,
     fontSize: 30,
     fontWeight: 500,
+    fontFamily: 'Roboto-Regular',
     marginBottom: 33,
   },
 
@@ -121,6 +122,7 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     fontSize: 16,
     lineHeight: 19,
+    fontFamily: 'Roboto-Regular',
     color: '#FFFFFF',
   },
   textMessage: {
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     textAlign: 'center',
+    fontFamily: 'Roboto-Regular',
     color: '#1B4371',
   },
   indicator: {
