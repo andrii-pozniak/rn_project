@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet, View,
-    TextInput
+    TextInput,
+    
 } from 'react-native';
 
 export const Form = props => {
+    const [isKeyboard, setIsKeyboard] = useState(false)
+
     return (
 
-        <View style={styles.form}>
+        <View >
             <TextInput
                 style={styles.input}
-                // onFocus={() => setIsKeyboard(true)}
+                onFocus={() => setIsKeyboard(true)}
                 placeholder="Login"
             />
             <TextInput
                 style={styles.input}
-                // onFocus={() => setIsKeyboard(true)}
+                onFocus={() => setIsKeyboard(true)}
                 placeholder="Email"
-
             />
         </View>
     )
