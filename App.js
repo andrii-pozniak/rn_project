@@ -7,14 +7,13 @@ import {
 
 } from 'react-native';
 import * as Font from 'expo-font';
-// import { RegistrationScreen } from "./Screens/RegistrationScreen/RegistrationScreen";
-import { LoginScreen } from "./Screens/LoginScreen/LoginScreen";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RegistrationScreen } from "./Screens/Auth/RegistrationScreen/RegistrationScreen";
+import { LoginScreen } from "./Screens/Auth/LoginScreen/LoginScreen";
 
-const initialPerson = {
-  login: '',
-  email: '',
-  password: ''
-}
+const AuthStack = createNativeStackNavigator();
+
 let customFonts = {
   'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
   'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
@@ -26,22 +25,8 @@ let customFonts = {
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
 
-  const addPerson = ({ login, email, password }) => {
-    const NewRegistration = {
-      login: login,
-      email: email,
-      password: password,
-    }
-
-    setPerson((prevState) => ({ ...prevState, addPerson }))
-
-  }
-
-  const keyboardHide = () => {
-    setIsKeyboard(false);
-    Keyboard.dismiss();
-    setPerson(initialPerson)
-  }
+  
+  
   useEffect(() => {
     (async () => await Font.loadAsync(customFonts))();
     setFontsLoaded(true)
@@ -52,30 +37,12 @@ export default function App() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={styles.container}>
-        <ImageBackground source={require("./assets/images/photo_bg.jpg")} style={styles.image}>
-
-          {/* <RegistrationScreen />          */}
-
-          <LoginScreen />
-        </ImageBackground>
-      </View>
-    </TouchableWithoutFeedback>
-
+   <NavigationContainer>
+    <AuthStack.Navigator>
+      <AuthStack.Screen name='Login' component={LoginScreen}/>
+      <AuthStack.Screen name='Register' component={RegistrationScreen}/>
+    </AuthStack.Navigator>
+   </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: "flex-end"
-  },
-
-});
