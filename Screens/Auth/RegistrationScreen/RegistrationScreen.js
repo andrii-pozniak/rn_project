@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-// import { Form } from "../Form/Form";
 
 import {
   StyleSheet, Text, View,
   TextInput, TouchableOpacity,
   KeyboardAvoidingView,
-  Keyboard,
-  TouchableWithoutFeedback,
-  Platform,
+  Keyboard,  
+  ImageBackground,
+  
 } from "react-native";
 
 const initialState = {
@@ -16,8 +15,7 @@ const initialState = {
   password: ''
 }
 
-export const RegistrationScreen = (
-) => {
+export const RegistrationScreen = ({navigation}) => {
   const [isKeyboard, setIsKeyboard] = useState(false)
   const [state, setState] = useState(initialState)
   console.log(keyboardHide)
@@ -29,6 +27,8 @@ export const RegistrationScreen = (
 
 
   return (
+    <View style={styles.container}>
+    <ImageBackground style={styles.image} source={require('../../../assets/images/photo_bg.jpg')}>
     <View style={styles.RegistrationForm}>
       <View style={{ ...styles.photo, top: isKeyboard ? 76 : 46 }}>
       </View>
@@ -36,7 +36,6 @@ export const RegistrationScreen = (
       <View style={{ marginBottom: isKeyboard ? 6 : 66 }}>
         <KeyboardAvoidingView
           behavior={null}>
-
           <View style={styles.inputPassword}>
             <TextInput
               style={styles.input}
@@ -68,17 +67,27 @@ export const RegistrationScreen = (
           <Text style={styles.titleBtn}>Register</Text>
         </TouchableOpacity>
         <Text
-          style={styles.textMessage}>Have you already an account? Enter</Text>
-
+          style={styles.textMessage} onPress={() => navigation.navigate("Login")}>Have you already an account? Enter</Text>
+           
       </View>
 
       <View style={styles.indicator}></View>
     </View>
-    // </TouchableWithoutFeedback>
+    </ImageBackground>
+</View>
+ 
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+image: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    resizeMode: 'cover',
+},
 
   titleForm: {
     textAlign: 'center',
@@ -101,6 +110,7 @@ const styles = StyleSheet.create({
   },
   RegistrationForm: {
     height: 550,
+    // top: 150,
     justifyContent: 'flex-end',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,

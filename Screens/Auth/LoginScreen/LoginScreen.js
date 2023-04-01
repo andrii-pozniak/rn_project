@@ -7,7 +7,8 @@ import {
     KeyboardAvoidingView,
     Keyboard,
     TouchableWithoutFeedback,
-    TextInput
+    TextInput, 
+    ImageBackground,
 
 } from 'react-native';
 
@@ -17,17 +18,20 @@ const initialState = {
 
 }
 
-export const LoginScreen = () => {
+export const LoginScreen = ({navigation}) => {
     const [isKeyboard, setIsKeyboard] = useState(false)
     const [state, setState] = useState(initialState)
     const keyboardHide = () => {
         setIsKeyboard(false);
         Keyboard.dismiss();
         setState(initialState)
-    }
+            }
     return (
-        <TouchableWithoutFeedback onPress={keyboardHide}>
-            <View style={styles.LoginScreenForm}>
+    
+    <TouchableWithoutFeedback onPress={keyboardHide}>
+        <View style={styles.container}>
+            <ImageBackground style={styles.image} source={require('../../../assets/images/photo_bg.jpg')}>         
+                <View style={styles.LoginScreenForm}>
                 <Text style={styles.titleForm}>Enter</Text>
                 <KeyboardAvoidingView
                     behavior={null}>
@@ -52,17 +56,30 @@ export const LoginScreen = () => {
                             style={styles.btn} onPress={keyboardHide}>
                             <Text style={styles.titleBtn}>Enter</Text>
                         </TouchableOpacity>
-                        <Text style={styles.textMessage}>Don't have an account? Register</Text>
+                        <Text style={styles.textMessage}  onPress={() => navigation.navigate("Register")}>Don't have an account? Register</Text>
+                        {/* <Button title="Go to Register" onPress={() => navigation.navigate("Register")} /> */}
+
                     </View>
                 </KeyboardAvoidingView>
                 <View style={styles.indicator}></View>
-            </View>
+            </View>   
+            </ImageBackground>
+            </View>        
         </TouchableWithoutFeedback>
+
 
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+      },
+    image: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        resizeMode: 'cover',
+    },
 
     titleForm: {
         textAlign: 'center',
@@ -75,8 +92,10 @@ const styles = StyleSheet.create({
 
     LoginScreenForm: {
         position: 'absolute',
+        // top: 350,
         width: '100%',
         height: 490,
+        // alignItems: 'flex-end',
         justifyContent: 'flex-end',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
