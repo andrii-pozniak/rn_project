@@ -107,7 +107,8 @@ const styles = StyleSheet.create({
     btn: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 51,
+        paddingBottom: 16,
+        paddingTop: 16,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
         marginBottom: 16,

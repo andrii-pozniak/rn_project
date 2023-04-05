@@ -38,7 +38,7 @@ const useRoute = (isAuth) => {
   }
 
   return (
-    <MainTab.Navigator tabBarOptions={{showLabel: true}}>
+    <MainTab.Navigator screenOptions={{showLabel: true}}>
       <MainTab.Screen options={{ headerShown: false, tabBarIcon:({focused, size, color }) => 
         <MaterialCommunityIcons name="post" size={size} color={color} />
       }} name="Post" component={PostScreen} />

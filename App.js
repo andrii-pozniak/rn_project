@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import './ReactotronConfig'
 import useRoute from "./router";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";

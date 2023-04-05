@@ -1,11 +1,30 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 
-const PostScreen = () => {
+const PostScreen = ({route}) => {
+    const [posts, setPosts] = useState([])
+    console.log('route', route.params)
 
+    useEffect(() => {
+        if(route.params) {
+            setPosts((prevState) => [...prevState, route.params])
+        }
+    }, [route.params])
+console.log('posts', posts)
     return (
         <View style={styles.container}>
-            <Text>PostScreen</Text>
+            <FlatList data={posts} 
+            keyExtractor={(item, indx) => indx.toString()} 
+            renderItem={( {item} ) => (
+                <View style={styles.containerImage}>
+                    <Image
+                    source={{ uri: item.capturedImage.uri}}
+                    style={styles.image}
+                    />
+
+                </View>
+            )}/>
+
         </View>
     )
     };
@@ -14,7 +33,17 @@ const PostScreen = () => {
         container: {
             flex: 1,
             justifyContent: 'center',           
-            alignItems: 'center'
+            // alignItems: 'center'
+        },
+        containerImage: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 10,
+        },
+        image: {
+            width: 343,
+            height: 240,
+            
 
         }
     })
