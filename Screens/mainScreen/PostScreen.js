@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import { View, Text, Dimensions, StyleSheet, FlatList, Image } from "react-native";
 
 const PostScreen = ({route}) => {
     const [posts, setPosts] = useState([])
-    console.log('route', route.params)
+    // console.log('route', route.params)
 
     useEffect(() => {
         if(route.params) {
             setPosts((prevState) => [...prevState, route.params])
         }
     }, [route.params])
-console.log('posts', posts)
+    // const screenHeight = Dimensions.get('screen').height;
+// console.log('posts', posts)
     return (
         <View style={styles.container}>
+
             <FlatList data={posts} 
             keyExtractor={(item, indx) => indx.toString()} 
             renderItem={( {item} ) => (
@@ -23,7 +25,8 @@ console.log('posts', posts)
                     />
 
                 </View>
-            )}/>
+                
+            )}style={{ flex: 1}} />
 
         </View>
     )
@@ -32,7 +35,8 @@ console.log('posts', posts)
     const styles = StyleSheet.create ({
         container: {
             flex: 1,
-            justifyContent: 'center',           
+            justifyContent: 'center',  
+            marginTop: 40,         
             // alignItems: 'center'
         },
         containerImage: {
@@ -43,6 +47,7 @@ console.log('posts', posts)
         image: {
             width: 343,
             height: 240,
+            borderRadius:8,
             
 
         }
