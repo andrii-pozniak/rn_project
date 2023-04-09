@@ -125,10 +125,6 @@ const CreateScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // marginTop: 60,
-    // paddingLeft: 16,
-    // paddingRight: 16,
     backgroundColor: "#fffff",
 
   },
